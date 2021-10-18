@@ -795,7 +795,7 @@ def encode_nested_example(schema, obj):
                 return list_dict
         # schema.feature is not a dict
         if isinstance(obj, str):  # don't interpret a string as a list
-            raise ValueError("Got a string but expected a list instead: '{}'".format(obj))
+	    obj = [obj]
         return [encode_nested_example(schema.feature, o) for o in obj] if obj is not None else None
     # Object with special encoding:
     # ClassLabel will convert from string to int, TranslationVariableLanguages does some checks
